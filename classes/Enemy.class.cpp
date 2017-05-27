@@ -12,12 +12,19 @@
 
 #include "Enemy.class.hpp"
 
+Enemy::Enemy()
+{
+	this->_lives = 100;
+	this->_shape = "@";
+	return ;
+}
+
 Enemy::Enemy(int hp, std::string shape)
 {
 	this->_lives = hp;
 	this->_shape = shape;
 	srand(clock());
-	int randomIndex = std::rand() % (getmaxx(this->_win->getWin()) - 2);
+	int randomIndex = std::rand() % (getmaxx(stdscr) - 2);
 	if (randomIndex < 2)
 		randomIndex = 2;
 	this->_xPos = randomIndex;
@@ -48,7 +55,6 @@ Enemy & Enemy::operator=(Enemy const & rhs)
 
 void	Enemy::render()
 {
-	movement();
 	mvprintw(this->_xPos, this->_yPos, this->_shape.c_str());	
 }
 
