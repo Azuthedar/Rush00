@@ -10,4 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 
+#include "../main.hpp"
+#include <curses.h>
+
+class Enemy : public AGameObject
+{
+	public:
+
+		Enemy(int hp, std::string shape);
+		Enemy(Enemy const & src);
+		~Enemy();
+
+		Enemy &	operator=(Enemy const & rhs);
+
+		virtual void	render() = 0;
+		virtual void	movement();
+
+	private:
+		Draw *_win;
+
+
+};

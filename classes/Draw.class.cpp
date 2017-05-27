@@ -12,8 +12,13 @@
 
 #include "../main.hpp"
 
+
 Draw::Draw()
 {
+	this->_winX = 80;
+	this->_winY = 50;
+	this->_startX = 100;
+	this->_startY = 5;
 	// Ratio to use for window 1:2
 	this->initScreen();
 	return ;
@@ -46,11 +51,20 @@ void		Draw::initScreen()
 	initscr();
 	noecho();
 	curs_set(false);
+	this->_win = newwin(this->_winY, this->_winX, this->_startY, this->_startX);
 }
 
 void Draw::drawBox()
 {
-	this->_win = newwin(_winY, _winX, _startY, _startX);
-    box(_win, 0,0);
-    wrefresh(_win);
+	getmaxyx(this->_win, this->_winY, this->_winX);
+	if (this->_winY > 50 || this->_winX > 80)
+	{
+		clear();
+		box(this->_win, 40,60);
+		wrefresh(this->_win);
+	}
+	else
+	{
+		printw("The screen is too small");
+	}
 }

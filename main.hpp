@@ -22,7 +22,7 @@
 
 #include <iostream>
 #include <string>
-#include <ncurses.h>
+#include <curses.h>
 #include <unistd.h>
 
 #endif
