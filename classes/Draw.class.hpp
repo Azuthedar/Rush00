@@ -12,10 +12,11 @@
 
 
 #ifndef DRAW_CLASS_HPP
- #define DRAW_CLASS_HPP
+#define DRAW_CLASS_HPP
 
 #include "../main.hpp"
-
+#include <string>
+#include <ncurses.h>
 class Draw
 {
 	public:
@@ -25,16 +26,20 @@ class Draw
 
 		Draw &	operator=(Draw const & rhs);
 
-		void	initScreen();
-		void	destroyWindow();
+		void	initScreen();		
+		void 	drawBox();
 		int		getWinX();
 		int		getWinY();
+		WINDOW* getWin();
 		
 	private:
 
 		int			_winX;
 		int			_winY;
-		std::string	winName;
+		int			_startY;
+		int			_startX;
+		std::string	_winName;
+		WINDOW * 	_win;
 		
 };
 

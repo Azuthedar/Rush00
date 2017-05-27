@@ -27,14 +27,18 @@ Draw::Draw(Draw const & src)
 
 Draw::~Draw()
 {
-	this->destroyWindow();
+	return;
 }
 
-Draw &		operator=(Draw const & rhs)
+Draw &	Draw::operator=(Draw const & rhs)
 {
 	this->_winX = rhs._winX;
 	this->_winY = rhs._winY;
 	this->_winName = rhs._winName;
+	return *this;
+}
+WINDOW* 	Draw::getWin(){
+	return this->_win;
 }
 
 void		Draw::initScreen()
@@ -42,4 +46,11 @@ void		Draw::initScreen()
 	initscr();
 	noecho();
 	curs_set(false);
+}
+
+void Draw::drawBox()
+{
+	this->_win = newwin(_winY, _winX, _startY, _startX);
+    box(_win, 0,0);
+    wrefresh(_win);
 }
