@@ -103,14 +103,12 @@ void	drawBox()
 {
 	for (int yWin = 0; yWin <= BORDERSIZEY; yWin++)
 	{
-		
 		for (int xWin = 0; xWin <= BORDERSIZEX; xWin++)
 		{
 			if (xWin == 0 || xWin == BORDERSIZEX)
 				mvprintw(xWin, yWin, "-");
 			else if (yWin == 0 || yWin == BORDERSIZEY)
 				mvprintw(xWin, yWin, "|");
-			
 		}
 	}
 }
