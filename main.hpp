@@ -6,7 +6,7 @@
 /*   By: jbuys <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 08:48:59 by jbuys             #+#    #+#             */
-/*   Updated: 2017/05/27 08:48:59 by jbuys            ###   ########.fr       */
+/*   Updated: 2017/05/27 17:09:32 by emsimang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "classes/Player.class.hpp"
 
 #define BORDERSIZEX 40
-#define BORDERSIZEY 40
+#define BORDERSIZEY 50
 
 #include <iostream>
 #include <string>

@@ -20,6 +20,8 @@ Player::Player()
 	this->_type = "Player";
 }
 
+//why is this pointing to src?
+//this will loose the address of the calling object casing a memory leak.
 Player::Player(Player const & src)
 {
 	*this = src;

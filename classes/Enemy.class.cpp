@@ -34,6 +34,7 @@ Enemy::Enemy(int hp, std::string shape)
 	return ;
 }
 
+//this should be assignment operator overload
 Enemy::Enemy(Enemy const & src)
 {
 	*this = src;
@@ -45,6 +46,7 @@ Enemy::~Enemy()
 	return ;
 }
 
+//this should copy constructor
 Enemy & Enemy::operator=(Enemy const & rhs)
 {
 	this->_type = rhs._type;

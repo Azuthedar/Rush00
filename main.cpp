@@ -92,7 +92,6 @@ void movement()
 			//MAKE CHECK TO SEE IF ENEMIES EXIST.
 			enemies[i].movement();
 			i++;
-
 		}
 	}
 	if (step % 10 == 0)
