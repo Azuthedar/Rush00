@@ -13,12 +13,15 @@
 #ifndef MAIN_HPP
  #define MAIN_HPP
 
-#include "./classes/Player.class.hpp"
-#include "./classes/Input.class.hpp"
-#include "./classes/Draw.class.hpp"
-#include "./classes/Enemy.class.hpp"
+#include "classes/Player.class.hpp"
+#include "classes/Input.class.hpp"
+#include "classes/Draw.class.hpp"
+#include "classes/Enemy.class.hpp"
+#include "classes/AGameObject.class.hpp"
+#include "classes/Player.class.hpp"
 
 #include <iostream>
+#include <string>
 #include <ncurses.h>
 #include <unistd.h>
 

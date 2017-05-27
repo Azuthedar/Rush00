@@ -1,4 +1,4 @@
-#include "AGameObject.hpp"
+#include "AGameObject.class.hpp"
 
 AGameObject::AGameObject()
 {
@@ -65,13 +65,18 @@ void AGameObject::setShape(std::string name)
     this->_shape = name;
 }
 
+void AGameObject::movement()
+{
+    this->_yPos += 1;
+}
+
 AGameObject& AGameObject::operator=(AGameObject const & src)
 {
     this->_shape = src.getShape();
     this->_lives = src.getLives();
-    this->_yPos = src.getYpos();
+    this->_yPos = src.getYPos();
     this->_xPos = src.getXPos();
     this->_type = src.getType();
 
-    return (*this)
+    return (*this);
 }
