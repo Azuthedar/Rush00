@@ -14,13 +14,9 @@
 
 Enemy::Enemy()
 {
-	this->_lives = 0;
+	this->_lives = 100;
 	this->_shape = "@";
-	srand(clock());
-	int randomIndex = std::rand() % (getmaxx(stdscr) - 2);
-	if (randomIndex < 2)
-		randomIndex = 2;
-	this->_xPos = randomIndex;
+	this->_xPos = 2;
 	this->_yPos = 2;
 	return ;
 }
@@ -67,5 +63,24 @@ void	Enemy::render()
 void	Enemy::movement()
 {
 	this->_yPos += 1;
+	if (this->_yPos >= BORDERSIZEY)
+	{
+		this->_yPos = 2;
+		srand(clock());
+		int randomIndex = std::rand() % (getmaxx(stdscr) - 2);
+		if (randomIndex < 2)
+			randomIndex = 2;
+		if (randomIndex > BORDERSIZEX - 1)
+			randomIndex = BORDERSIZEX - 1;
+		this->_xPos = randomIndex;
+	}
+}
+
+void	Enemy::randomiseXPos()
+{
+	int randomIndex = std::rand() % BORDERSIZEX - 1;
+	if (randomIndex < 2)
+		randomIndex = 2;
+	this->_xPos = randomIndex;
 }
 

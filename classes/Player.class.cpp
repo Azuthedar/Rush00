@@ -15,8 +15,8 @@ Player::Player()
 {
 	this->_shape = "A";
 	this->_lives = 3;
-	this->_yPos = BORDERSIZEX / 2;
-	this->_xPos = BORDERSIZEY - 2;
+	this->_xPos = BORDERSIZEX / 2;
+	this->_yPos = BORDERSIZEY - 2;
 	this->_type = "Player";
 }
 
@@ -43,7 +43,7 @@ Player & Player::operator=(Player const & src)
 
 void Player::render()
 {
-   mvprintw(this->_xPos, this->_yPos, this->_shape.c_str());
+   mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
 }
 
 void Player::Fire()
@@ -56,18 +56,22 @@ void Player::movement()
 
 void Player::movement(int ch)
 {
-	switch (ch) {
-		  case KEY_LEFT: /* user pressed backspace */ 
-			 this->_yPos -= 1;
+		switch (ch) {
+		  case KEY_LEFT: /* user pressed backspace */
+		  	if (this->_xPos > 1)
+			 	this->_xPos -= 1;
 			 break;
 		  case KEY_UP:  /* user pressed up arrow key */
-			 this->_xPos -= 1;
+		  if (this->_yPos > 1)
+			 this->_yPos -= 1;
 			 break;
 		  case KEY_DOWN:  /* user pressed up arrow key */
-			 this->_xPos += 1;
+		  if (this->_yPos < BORDERSIZEY - 1)
+			 this->_yPos += 1;
 			 break;
 		  case KEY_RIGHT:   /* user pressed right arrow */
-			 this->_yPos += 1;
+		  	if (this->_xPos < BORDERSIZEX - 1)
+			 this->_xPos += 1;
 			 break;
 	 }
 }

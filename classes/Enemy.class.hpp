@@ -27,7 +27,8 @@ class Enemy : public AGameObject
 
 		virtual void	render();
 		virtual void	movement();
-
+		void			randomiseXPos();
+		
 	private:
 
 

@@ -56,17 +56,19 @@ void update()
 
 void render()
 {
-/*	int i = 0;
+	int i = 0;
+	srand(time(NULL));
 	while (i < maxEnemies)
 	{
 		if (enemies[i].getLives() != 0)
+		{
+			enemies[i].setShape("@");
 			enemies[i].render();
+			enemies[i].randomiseXPos();
+		}
 		i++;
-	}*/
-	enemies[0].setShape("@");
-	enemies[1].setShape("@");
+	}
 	player->setShape("A");
-	enemies[0].render();
 	player->render();
 	refresh();
 }
