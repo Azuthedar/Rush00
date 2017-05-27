@@ -14,8 +14,14 @@
 
 Enemy::Enemy()
 {
-	this->_lives = 100;
+	this->_lives = 0;
 	this->_shape = "@";
+	srand(clock());
+	int randomIndex = std::rand() % (getmaxx(stdscr) - 2);
+	if (randomIndex < 2)
+		randomIndex = 2;
+	this->_xPos = randomIndex;
+	this->_yPos = 2;
 	return ;
 }
 
@@ -55,7 +61,7 @@ Enemy & Enemy::operator=(Enemy const & rhs)
 
 void	Enemy::render()
 {
-	mvprintw(this->_xPos, this->_yPos, this->_shape.c_str());	
+	mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
 }
 
 void	Enemy::movement()

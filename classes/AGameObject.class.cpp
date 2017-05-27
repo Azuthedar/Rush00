@@ -65,11 +65,6 @@ void AGameObject::setShape(std::string name)
     this->_shape = name;
 }
 
-void AGameObject::movement()
-{
-    this->_yPos += 1;
-}
-
 AGameObject& AGameObject::operator=(AGameObject const & src)
 {
     this->_shape = src.getShape();

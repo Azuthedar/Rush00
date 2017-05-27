@@ -15,10 +15,12 @@
 
 #include "classes/Player.class.hpp"
 #include "classes/Input.class.hpp"
-#include "classes/Draw.class.hpp"
 #include "classes/Enemy.class.hpp"
 #include "classes/AGameObject.class.hpp"
 #include "classes/Player.class.hpp"
+
+#define BORDERSIZEX 40
+#define BORDERSIZEY 40
 
 #include <iostream>
 #include <string>

@@ -4,6 +4,7 @@ void update();
 void render();
 void initScreen();
 void movement();
+void drawBox();
 
 int step = 0;
 int maxEnemies = 10;
@@ -24,7 +25,7 @@ int main()
 		if (step > 100000)
 			step = 0;
 		getmaxyx(stdscr, winY, winX);
-		if (winY < 30 || winX < 50)
+		if (winY < BORDERSIZEY || winX < BORDERSIZEX)
 		{
 			clear();
 			printw("Screen is too small");
@@ -35,12 +36,13 @@ int main()
 		{
 			update();
 			render();
+			
 		}
 		usleep(1000);
 	}
+	endwin();
 	system("clear");
 	std::cout << "Your game has finished!" << std::endl;
-	endwin();
 	return 0;
 }
 
@@ -48,19 +50,25 @@ void update()
 {
 	clear();
 	movement();
+	drawBox();
 	usleep(1000);
-	refresh();
 }
 
 void render()
 {
-	int i = 0;
+/*	int i = 0;
 	while (i < maxEnemies)
 	{
-		enemies[i].render();
+		if (enemies[i].getLives() != 0)
+			enemies[i].render();
 		i++;
-	}
+	}*/
+	enemies[0].setShape("@");
+	enemies[1].setShape("@");
+	player->setShape("A");
+	enemies[0].render();
 	player->render();
+	refresh();
 }
 
 void initScreen()
@@ -75,27 +83,32 @@ void initScreen()
 void movement()
 {
 	int i = 0;
-
-	while (i < maxEnemies)
+	if (step % 300 == 0)
 	{
-		//MAKE CHECK TO SEE IF ENEMIES EXIST.
-		enemies[i].movement();
+		while (i < maxEnemies)
+		{
+			//MAKE CHECK TO SEE IF ENEMIES EXIST.
+			enemies[i].movement();
+			i++;
+
+		}
 	}
-	if (player->getLives() > 0)
-		player->movement();
+	if (step % 10 == 0)
+		player->movement(getch());
 }
 
 void	drawBox()
 {
-	for (int yWin = 0; yWin <= 40; yWin++)
+	for (int yWin = 0; yWin <= BORDERSIZEY; yWin++)
 	{
 		
-		for (int xWin = 0; xWin <= 40; xWin++)
+		for (int xWin = 0; xWin <= BORDERSIZEX; xWin++)
 		{
-			if (xWin == 0 || xWin == 40)
-				printw("|");
-			else
-				printw("-");
+			if (xWin == 0 || xWin == BORDERSIZEX)
+				mvprintw(xWin, yWin, "-");
+			else if (yWin == 0 || yWin == BORDERSIZEY)
+				mvprintw(xWin, yWin, "|");
+			
 		}
 	}
 }

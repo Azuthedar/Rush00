@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #pragma once
 #include "AGameObject.class.hpp"
+#include "../main.hpp"
 
 class Player: virtual public AGameObject
 {
