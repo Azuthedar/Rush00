@@ -28,10 +28,9 @@ class Enemy : public AGameObject
 		virtual void	render();
 		virtual void	movement();
 		void			randXPos();
-		void			takeDamage(int amount);
+		int			takeDamage(int amount);
 		void			create();
 		
 	private:
-
 
 };

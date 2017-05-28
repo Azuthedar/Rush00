@@ -89,16 +89,17 @@ void	Enemy::randXPos()
 	}
 }
 
-void	Enemy::takeDamage(int amount)
+int	Enemy::takeDamage(int amount)
 {
 	if (this->_lives > 0)
 	{
 		this->_lives -= amount;
 		if (this->_lives <= 0)
 		{
-			delete this;
+			return (0);
 		}
 	}
+	return (1);
 }
 
 void	Enemy::create()

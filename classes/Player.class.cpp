@@ -107,11 +107,11 @@ bool Player::movement(int ch, Enemy *enemy, int maxEnemies)
 			 		this->_yPos -= 1;
 			 	break;
 			case KEY_DOWN:  /* user pressed up arrow key */
-		  		if (this->_yPos < BORDERSIZEY - 2)
+		  		if (this->_yPos < BORDERSIZEY - 1)
 			 		this->_yPos += 1;
 			 	break;
 		  	case KEY_RIGHT:   /* user pressed right arrow */
-		  		if (this->_xPos < BORDERSIZEX - 1)
+		  		if (this->_xPos < BORDERSIZEX - 2)
 					 this->_xPos += 1;
 			 	break;
 			case 27:

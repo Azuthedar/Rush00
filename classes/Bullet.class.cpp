@@ -29,9 +29,9 @@ Bullet &	Bullet::operator=(Bullet const & rhs)
 	return (*this);
 }
 
-void		Bullet::doDamage(Enemy enemy)
+int		Bullet::doDamage(Enemy enemy)
 {
-	enemy.takeDamage(this->_damage);
+	return(enemy.takeDamage(this->_damage));
 }
 
 void		Bullet::movement()
@@ -40,7 +40,9 @@ void		Bullet::movement()
 void		Bullet::collision(Enemy *enemy, int maxEnemies)
 {
 	int i = 0;
+	int j;
 	int enemyX, enemyY;
+	Enemy *en;
 
 	while (i < maxEnemies)
 	{
@@ -48,7 +50,19 @@ void		Bullet::collision(Enemy *enemy, int maxEnemies)
 		enemyY = enemy[i].getYPos();
 		if (enemyX == this->_xPos && (enemyY == this->_yPos || enemyY == this->_yPos - 1))
 		{
-			doDamage(enemy[i]);
+			j = doDamage(enemy[i]);
+			if (j == 0)
+			{
+				int randomIndex = std::rand() % 3;
+				if (randomIndex == 0)
+					en = new Enemy(50, "@");
+				if (randomIndex <= 3)
+					en = new Enemy(150, "U");
+				if (randomIndex <= 5)
+					en = new Enemy(150, "Y");
+				enemy[i] = *en;
+				enemy[i].setLives(100);
+			}
 		}
 		i++;
 	}

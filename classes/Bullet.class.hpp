@@ -15,7 +15,7 @@ class Bullet : virtual public AGameObject
 
 		Bullet &	operator=(Bullet const & rhs);
 		
-		void		doDamage(Enemy enemy);
+		int			doDamage(Enemy enemy);
 		void		collision(Enemy *enemy, int maxEnemies);
 		void		movement();
 		void		movement(Enemy *enemy, int maxEnemies);
@@ -23,5 +23,5 @@ class Bullet : virtual public AGameObject
 
 	private:
 		int	_damage;
-
+		Enemy *_enemy;
 };
