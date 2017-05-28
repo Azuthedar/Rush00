@@ -75,7 +75,7 @@ void render()
 		{
 			enemies[i].setShape("@");
 			enemies[i].render();
-			enemies[i].randomiseXPos();
+			enemies[i].randXPos();
 		}
 		i++;
 	}

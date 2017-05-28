@@ -44,7 +44,10 @@ Player & Player::operator=(Player const & src)
 
 void Player::render()
 {
-   mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
+	mvprintw(this->_yPos -1, this->_xPos, this->_shape.c_str());
+	mvprintw(this->_yPos, this->_xPos+1, this->_shape.c_str());
+	mvprintw(this->_yPos, this->_xPos-1, this->_shape.c_str());
+	mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
 }
 
 void Player::Fire()
@@ -62,8 +65,9 @@ void Player::collision(Enemy *enemy, int maxEnemies)
 		enemyX = enemy[i].getXPos();
 		enemyY = enemy[i].getYPos();
 
-		if (this->_xPos == enemyX && this->_yPos == enemyY)
-		{
+		if (((this->_xPos == enemyX || this->_xPos -1 == enemyX || this->_xPos + 1 == enemyX)
+		 && this->_yPos == enemyY) || (this->_xPos == enemyX && this->_yPos - 1 == enemyY))
+		{ 
 			if (this->_lives > 0)
 			{
 				this->_lives--;
@@ -73,7 +77,6 @@ void Player::collision(Enemy *enemy, int maxEnemies)
 			else
 				delete this;
 		}
-
 		i++;
 	}
 }

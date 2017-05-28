@@ -26,10 +26,7 @@ Enemy::Enemy(int hp, std::string shape)
 	this->_lives = hp;
 	this->_shape = shape;
 	srand(clock());
-	int randomIndex = std::rand() % BORDERSIZEX - 1;
-	if (randomIndex < 2)
-		randomIndex = 2;
-	this->_xPos = randomIndex;
+	randXPos();
 	this->_yPos = 2;
 	return ;
 }
@@ -69,17 +66,15 @@ void	Enemy::movement()
 	{
 		this->_yPos = 2;
 		srand(clock());
-		int randomIndex = std::rand() % BORDERSIZEX - 1;
-		if (randomIndex < 2)
-			randomIndex = 2;
-		this->_xPos = randomIndex;
+		randXPos();
 	}
 }
 
-void	Enemy::randomiseXPos()
+void	Enemy::randXPos()
 {
 	if (this->_yPos == 2)
 	{
+		srand(clock());
 		int randomIndex = std::rand() % BORDERSIZEX - 1;
 		if (randomIndex < 2)
 			randomIndex = 2;
