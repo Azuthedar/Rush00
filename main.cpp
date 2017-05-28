@@ -6,6 +6,7 @@ void initScreen();
 void movement();
 void drawBox();
 
+bool loop = TRUE;
 int step = 0;
 int maxEnemies = 10;
 
@@ -15,30 +16,40 @@ Enemy	*enemies = new Enemy[maxEnemies];
 
 int main()
 {
-	bool loop = TRUE;
 	int winX, winY;
 
 	initScreen();
-	while (loop)
+	while (loop == TRUE)
 	{
 		step++;
 		if (step > 100000)
 			step = 0;
-		getmaxyx(stdscr, winY, winX);
-		if (winY < BORDERSIZEY || winX < BORDERSIZEX)
+		if (player->getLives() > 0)
 		{
-			clear();
-			printw("Screen is too small");
-			usleep(1000);
-			refresh();
+			getmaxyx(stdscr, winY, winX);
+			if (winY < BORDERSIZEY || winX < BORDERSIZEX)
+			{
+				clear();
+				printw("Screen is too small");
+				usleep(1000);
+				refresh();
+			}
+			else
+			{
+				update();
+				render();
+				
+			}
+			usleep(800);
 		}
 		else
 		{
-			update();
-			render();
-			
+			clear();
+			printw("You have died:\nGAME OVER");
+			usleep(1000);
+			loop = FALSE;
+			refresh();
 		}
-		usleep(800);
 	}
 	endwin();
 	system("clear");
@@ -95,7 +106,7 @@ void movement()
 		}
 	}
 	if (step % 10 == 0)
-		player->movement(getch());
+		loop = player->movement(getch(), enemies, maxEnemies);
 }
 
 void	drawBox()

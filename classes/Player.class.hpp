@@ -10,20 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
+
 #include "AGameObject.class.hpp"
+#include "Enemy.class.hpp"
 #include "../main.hpp"
 
-class Player: virtual public AGameObject
-{
-    public:
-    Player();
-    Player(Player const & src);
-    ~Player();
-    Player& operator=(Player const & src);
-    void render();
-    void Fire();
-    void movement();
-    virtual void movement(int ch);
-    private:
+class Enemy;
 
+class Player : public AGameObject
+{
+	public:
+
+	Player();
+	Player(Player const & src);
+	~Player();
+
+	Player& 		operator=(Player const & src);
+	
+	void 			render();
+	void 			Fire();
+	void			collision(Enemy *enemy, int maxEnemies);
+	void 			movement();
+	virtual bool	movement(int ch, Enemy *enemy, int maxEnemies);
+
+	private:
 };

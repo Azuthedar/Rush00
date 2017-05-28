@@ -26,7 +26,7 @@ Enemy::Enemy(int hp, std::string shape)
 	this->_lives = hp;
 	this->_shape = shape;
 	srand(clock());
-	int randomIndex = std::rand() % (getmaxx(stdscr) - 2);
+	int randomIndex = std::rand() % BORDERSIZEX - 1;
 	if (randomIndex < 2)
 		randomIndex = 2;
 	this->_xPos = randomIndex;
