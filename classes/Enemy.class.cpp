@@ -16,7 +16,6 @@ Enemy::Enemy()
 {
 	this->_lives = 100;
 	this->_shape = "@";
-	this->_xPos = 2;
 	this->_yPos = 2;
 	return ;
 }
