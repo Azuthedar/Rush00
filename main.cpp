@@ -9,7 +9,7 @@ void drawBox();
 
 bool loop = TRUE;
 int step = 0;
-int maxEnemies = 10;
+int maxEnemies = 50;
 
 
 Player	*player = new Player();

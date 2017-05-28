@@ -85,7 +85,7 @@ void Player::collision(Enemy *enemy, int maxEnemies)
 				this->_yPos = BORDERSIZEY - 2;
 			}
 			else
-				delete this;
+				delete [] this;
 		}
 		i++;
 	}
