@@ -14,9 +14,10 @@
 #include "AGameObject.class.hpp"
 #include "Enemy.class.hpp"
 #include "../main.hpp"
+#include "Bullet.class.hpp"
 
 class Enemy;
-
+class Bullet;
 class Player : public AGameObject
 {
 	public:
@@ -30,7 +31,10 @@ class Player : public AGameObject
 		void 			render();
 		void			collision(Enemy *enemy, int maxEnemies);
 		void 			movement();
+		void			fire(int i);
+		Bullet*			getBullet(int i);
 		virtual bool	movement(int ch, Enemy *enemy, int maxEnemies);
 
 	private:
+		Bullet* _bullet[50];//changing bullet amount increase bulelt burst
 };

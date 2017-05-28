@@ -2,10 +2,6 @@
 
 Bullet::Bullet()
 {
-	this->_damage = 80;
-	this->_shape = "|";
-	this->_type = "Bullet";
-	return ;
 }
 
 Bullet::Bullet(Bullet const & src)
@@ -16,6 +12,15 @@ Bullet::Bullet(Bullet const & src)
 Bullet::~Bullet()
 {
 	return ;
+}
+
+Bullet::Bullet(int x, int y)
+{
+	this->_xPos = x;
+	this->_yPos = y;
+	this->_damage = 2;
+	this->_shape = "|";
+	this->_type = "Bullet";
 }
 
 Bullet &	Bullet::operator=(Bullet const & rhs)
@@ -45,6 +50,10 @@ void		Bullet::collision(Enemy *enemy, int maxEnemies)
 		}
 		i++;
 	}
+	if(this->_yPos == 1)
+	{
+		//this = nullptr;
+	}
 }
 
 void		Bullet::movement()
@@ -52,6 +61,6 @@ void		Bullet::movement()
 	this->_yPos -= 1;
 	if (this->_yPos < 2)
 	{
-		delete this;
+		//this = nullptr;
 	}
 }

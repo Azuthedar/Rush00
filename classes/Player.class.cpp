@@ -44,6 +44,21 @@ Player & Player::operator=(Player const & src)
 
 void Player::render()
 {
+	int i = 0;
+	while (i < 10)
+	{
+		if (getBullet(i) != nullptr)
+		{
+			if (getBullet(i))
+			mvprintw(this->_bullet[i]->getYPos(), this->_bullet[i]->getXPos(), this->_bullet[i]->getShape().c_str());
+			if (getBullet(i)->getYPos() < 2)
+			{
+				this->_bullet[i] = new Bullet(this->_xPos, this->_yPos);
+			}
+		}
+
+		i++;
+	}
 	mvprintw(this->_yPos -1, this->_xPos, this->_shape.c_str());
 	mvprintw(this->_yPos, this->_xPos+1, this->_shape.c_str());
 	mvprintw(this->_yPos, this->_xPos-1, this->_shape.c_str());
@@ -104,4 +119,14 @@ bool Player::movement(int ch, Enemy *enemy, int maxEnemies)
 	 }
 	 collision(enemy, maxEnemies);
 	 return (TRUE);
+}
+
+Bullet* Player::getBullet(int i)
+{
+	return this->_bullet[i];
+}
+
+void	Player::fire(int i)
+{
+	this->_bullet[i] = new Bullet(this->_xPos, this->_yPos - 2);
 }

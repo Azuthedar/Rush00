@@ -1,4 +1,5 @@
 #include "main.hpp"
+#include <time.h>
 
 void update();
 void render();
@@ -67,21 +68,19 @@ void update()
 
 void render()
 {
-	int i = 0;
-	srand(time(NULL));
-	while (i < maxEnemies)
-	{
-		if (enemies[i].getLives() != 0)
-		{
-			enemies[i].setShape("@");
-			enemies[i].render();
-			enemies[i].randXPos();
-		}
-		i++;
-	}
-	player->setShape("A");
-	player->render();
-	refresh();
+	static int i = 0;
+    srand(time(NULL));
+    if (i < maxEnemies && step % 500 == 0)
+    {
+        enemies[i].setYPos(2);
+        enemies[i].randXPos();
+        i++;
+    }
+    for (int j = 0; j < maxEnemies; j++)
+        enemies[j].render();
+    player->setShape("A");
+    player->render();
+    refresh();
 }
 
 void initScreen()
@@ -95,6 +94,7 @@ void initScreen()
 
 void movement()
 {
+	srand(clock());
 	int i = 0;
 	if (step % 300 == 0)
 	{
@@ -107,6 +107,30 @@ void movement()
 	}
 	if (step % 10 == 0)
 		loop = player->movement(getch(), enemies, maxEnemies);
+	if (step % 200 == 0)
+	{
+		i = 0;
+		while (player->getBullet(i) != nullptr && i < 50)
+		{
+			i++;
+		}
+		player->fire(i);
+	}
+	if(step % 10 == 0)
+	{
+		i = 0;
+		while (i < 10)
+		{
+			if (player->getBullet(i) != nullptr)
+			{
+				if (player->getBullet(i)->getYPos() != 0)
+				{
+					player->getBullet(i)->movement();
+				}
+			}
+			i++;
+		}
+	}
 }
 
 void	drawBox()

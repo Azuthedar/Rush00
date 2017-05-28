@@ -1,12 +1,15 @@
 #pragma once
 
 #include "../main.hpp"
+#include "Enemy.class.hpp"
 
+class Enemy;
 
-class Bullet : public AGameObject
+class Bullet : virtual public AGameObject
 {
 	public:
 		Bullet();
+		Bullet(int x, int y);
 		Bullet(Bullet const & src);
 		~Bullet();
 
