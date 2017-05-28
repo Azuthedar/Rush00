@@ -56,34 +56,46 @@ Enemy & Enemy::operator=(Enemy const & rhs)
 
 void	Enemy::render()
 {
-	mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
+	if (this->_lives > 0)
+		mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
 }
 
 void	Enemy::movement()
 {
-	this->_yPos += 1;
-	if (this->_yPos >= BORDERSIZEY)
+	if (this->_lives > 0)
 	{
-		this->_yPos = 2;
-		srand(clock());
-		randXPos();
+		this->_yPos += 1;
+		if (this->_yPos >= BORDERSIZEY)
+		{
+			this->_yPos = 2;
+			srand(clock());
+			randXPos();
+		}
 	}
 }
 
 void	Enemy::randXPos()
 {
-	if (this->_yPos == 2)
+	if (this->_lives > 0)
 	{
-		srand(clock());
-		int randomIndex = std::rand() % BORDERSIZEX - 1;
-		if (randomIndex < 2)
-			randomIndex = 2;
-		this->_xPos = randomIndex;
+		if (this->_yPos == 2)
+		{
+			srand(clock());
+			int randomIndex = std::rand() % BORDERSIZEX - 1;
+			if (randomIndex < 2)
+				randomIndex = 2;
+			this->_xPos = randomIndex;
+		}
 	}
 }
 
 void	Enemy::takeDamage(int amount)
 {
 	this->_lives -= amount;
+	if (this->_lives < 0)
+	{
+		this->_lives = 0;
+		delete this;
+	}
 }
 
