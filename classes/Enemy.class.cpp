@@ -15,7 +15,7 @@
 Enemy::Enemy()
 {
 	this->_lives = 100;
-	this->_shape = "@";
+	this->_shape = "";
 	this->_yPos = 2;
 	return ;
 }
@@ -80,6 +80,7 @@ void	Enemy::randXPos()
 		if (this->_yPos == 2)
 		{
 			srand(clock());
+			create();
 			int randomIndex = std::rand() % BORDERSIZEX - 1;
 			if (randomIndex < 2)
 				randomIndex = 2;
@@ -99,4 +100,23 @@ void	Enemy::takeDamage(int amount)
 			delete this;
 		}
 	}
+}
+
+void	Enemy::create()
+{
+	srand(clock());
+	int randomIndex;
+	randomIndex = std::rand() % 15;
+	if (randomIndex <= 5)
+	{
+		this->setShape("@");
+	}
+	else if (randomIndex > 5 && randomIndex <= 10)
+	{
+		this->setShape("Y");
+		this->setLives(200);
+	}
+	else
+		this->setShape("U");
+		this->setLives(150);
 }
