@@ -18,7 +18,7 @@ Bullet::Bullet(int x, int y)
 {
 	this->_xPos = x;
 	this->_yPos = y;
-	this->_damage = 2;
+	this->_damage = 1000000000;
 	this->_shape = "|";
 	this->_type = "Bullet";
 }
@@ -34,6 +34,9 @@ void		Bullet::doDamage(Enemy enemy)
 	enemy.takeDamage(this->_damage);
 }
 
+void		Bullet::movement()
+{}
+
 void		Bullet::collision(Enemy *enemy, int maxEnemies)
 {
 	int i = 0;
@@ -46,21 +49,14 @@ void		Bullet::collision(Enemy *enemy, int maxEnemies)
 		if (enemyX == this->_xPos && (enemyY == this->_yPos || enemyY == this->_yPos - 1))
 		{
 			doDamage(enemy[i]);
-			delete this;
 		}
 		i++;
 	}
-	if(this->_yPos == 1)
-	{
-		//this = nullptr;
-	}
 }
 
-void		Bullet::movement()
+void		Bullet::movement(Enemy *enemy, int maxEnemies)
 {
 	this->_yPos -= 1;
-	if (this->_yPos < 2)
-	{
-		//this = nullptr;
-	}
+	collision(enemy, maxEnemies);
+
 }

@@ -99,7 +99,7 @@ bool Player::movement(int ch, Enemy *enemy, int maxEnemies)
 		switch (ch)
 		{
 			case KEY_LEFT: /* user pressed backspace */
-		  		if (this->_xPos > 1)
+		  		if (this->_xPos > 2)
 			 		this->_xPos -= 1;
 				break;
 			case KEY_UP:  /* user pressed up arrow key */
@@ -107,7 +107,7 @@ bool Player::movement(int ch, Enemy *enemy, int maxEnemies)
 			 		this->_yPos -= 1;
 			 	break;
 			case KEY_DOWN:  /* user pressed up arrow key */
-		  		if (this->_yPos < BORDERSIZEY - 1)
+		  		if (this->_yPos < BORDERSIZEY - 2)
 			 		this->_yPos += 1;
 			 	break;
 		  	case KEY_RIGHT:   /* user pressed right arrow */

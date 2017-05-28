@@ -125,7 +125,7 @@ void movement()
 			{
 				if (player->getBullet(i)->getYPos() != 0)
 				{
-					player->getBullet(i)->movement();
+					player->getBullet(i)->movement(enemies, maxEnemies);
 				}
 			}
 			i++;

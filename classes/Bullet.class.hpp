@@ -18,6 +18,7 @@ class Bullet : virtual public AGameObject
 		void		doDamage(Enemy enemy);
 		void		collision(Enemy *enemy, int maxEnemies);
 		void		movement();
+		void		movement(Enemy *enemy, int maxEnemies);
 		void		render();
 
 	private:

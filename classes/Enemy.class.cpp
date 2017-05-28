@@ -14,7 +14,7 @@
 
 Enemy::Enemy()
 {
-	this->_lives = 100;
+	this->_lives = 50;
 	this->_shape = "";
 	this->_yPos = 2;
 	return ;
@@ -96,7 +96,6 @@ void	Enemy::takeDamage(int amount)
 		this->_lives -= amount;
 		if (this->_lives <= 0)
 		{
-			this->_lives = 0;
 			delete this;
 		}
 	}
@@ -114,9 +113,7 @@ void	Enemy::create()
 	else if (randomIndex > 5 && randomIndex <= 10)
 	{
 		this->setShape("Y");
-		this->setLives(200);
 	}
 	else
 		this->setShape("U");
-		this->setLives(150);
 }
