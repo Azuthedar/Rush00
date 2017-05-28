@@ -50,11 +50,6 @@ void Player::render()
 	mvprintw(this->_yPos, this->_xPos, this->_shape.c_str());
 }
 
-void Player::Fire()
-{
-
-}
-
 void Player::collision(Enemy *enemy, int maxEnemies)
 {
 	int i = 0;

@@ -28,7 +28,6 @@ class Player : public AGameObject
 	Player& 		operator=(Player const & src);
 	
 	void 			render();
-	void 			Fire();
 	void			collision(Enemy *enemy, int maxEnemies);
 	void 			movement();
 	virtual bool	movement(int ch, Enemy *enemy, int maxEnemies);
