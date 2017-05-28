@@ -23,14 +23,12 @@ class Enemy : public AGameObject
 		Enemy(Enemy const & src);
 		~Enemy();
 
-		Enemy &	operator=(Enemy const & rhs);
+		Enemy &			operator=(Enemy const & rhs);
 
 		virtual void	render();
 		virtual void	movement();
 		void			randXPos();
 		void			takeDamage(int amount);
-
-		Enemy			getEnemy() const;
 		
 	private:
 

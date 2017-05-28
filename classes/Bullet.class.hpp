@@ -12,11 +12,12 @@ class Bullet : public AGameObject
 
 		Bullet &	operator=(Bullet const & rhs);
 		
-		void		doDamage();
-		void		collision();
+		void		doDamage(Enemy enemy);
+		void		collision(Enemy *enemy, int maxEnemies);
+		void		movement();
+		void		render();
 
 	private:
 		int	_damage;
-		Enemy &_enemy;
 
-}
+};

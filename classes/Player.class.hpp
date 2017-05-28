@@ -21,16 +21,16 @@ class Player : public AGameObject
 {
 	public:
 
-	Player();
-	Player(Player const & src);
-	~Player();
+		Player();
+		Player(Player const & src);
+		~Player();
 
-	Player& 		operator=(Player const & src);
-	
-	void 			render();
-	void			collision(Enemy *enemy, int maxEnemies);
-	void 			movement();
-	virtual bool	movement(int ch, Enemy *enemy, int maxEnemies);
+		Player& 		operator=(Player const & src);
+		
+		void 			render();
+		void			collision(Enemy *enemy, int maxEnemies);
+		void 			movement();
+		virtual bool	movement(int ch, Enemy *enemy, int maxEnemies);
 
 	private:
 };
