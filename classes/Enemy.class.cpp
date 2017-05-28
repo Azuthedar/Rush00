@@ -82,3 +82,8 @@ void	Enemy::randXPos()
 	}
 }
 
+void	Enemy::takeDamage(int amount)
+{
+	this->_lives -= amount;
+}
+
