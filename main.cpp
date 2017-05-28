@@ -38,7 +38,7 @@ int main()
 			render();
 			
 		}
-		usleep(1000);
+		usleep(800);
 	}
 	endwin();
 	system("clear");

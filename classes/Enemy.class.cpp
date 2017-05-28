@@ -6,7 +6,7 @@
 /*   By: jbuys <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 08:34:40 by jbuys             #+#    #+#             */
-/*   Updated: 2017/05/27 08:34:40 by jbuys            ###   ########.fr       */
+/*   Updated: 2017/05/28 07:48:09 by lhamlyn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,21 @@ void	Enemy::movement()
 	{
 		this->_yPos = 2;
 		srand(clock());
-		int randomIndex = std::rand() % (getmaxx(stdscr) - 2);
+		int randomIndex = std::rand() % BORDERSIZEX - 1;
 		if (randomIndex < 2)
 			randomIndex = 2;
-		if (randomIndex > BORDERSIZEX - 1)
-			randomIndex = BORDERSIZEX - 1;
 		this->_xPos = randomIndex;
 	}
 }
 
 void	Enemy::randomiseXPos()
 {
-	int randomIndex = std::rand() % BORDERSIZEX - 1;
-	if (randomIndex < 2)
-		randomIndex = 2;
-	this->_xPos = randomIndex;
+	if (this->_yPos == 2)
+	{
+		int randomIndex = std::rand() % BORDERSIZEX - 1;
+		if (randomIndex < 2)
+			randomIndex = 2;
+		this->_xPos = randomIndex;
+	}
 }
 
